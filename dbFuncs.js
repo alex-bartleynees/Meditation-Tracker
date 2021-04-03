@@ -6,55 +6,65 @@ const connection = require('knex')(config)
 
 function addUser(obj, db = connection) {
   return db('users').insert(obj)
-  .catch((err) => {
-    console.log(err.message)
-})
-  
+    .catch((err) => {
+      console.log(err.message)
+    })
+
 }
 
-function getNameId (obj, db = connection) {
+function getNameId(obj, db = connection) {
   return db('users')
-  .where('name', obj.name)
-  .select()
-  .catch((err) => {
-    console.log(err.message)
-})
+    .where('name', obj.name)
+    .select()
+    .catch((err) => {
+      console.log(err.message)
+    })
 }
 
-function addMeditation (obj, db = connection) {
+function addMeditation(obj, db = connection) {
   return db('meditation')
-  .insert(obj)
-  .select()
-  .catch((err) => {
-    console.log(err.message)
-})
+    .insert(obj)
+    .select()
+    .catch((err) => {
+      console.log(err.message)
+    })
 }
 
-function getAllUsers (db = connection) {
+function getAllUsers(db = connection) {
   return db('users')
-  .select()
-  .catch((err) => {
-    console.log(err.message)
-})
+    .select()
+    .catch((err) => {
+      console.log(err.message)
+    })
 }
 
-function getMeditationbyID (id, db = connection) {
+function getMeditationbyID(id, db = connection) {
   return db('meditation')
-  .where('meditation.user_id', id)
-  .catch((err) => {
-    console.log(err.message)
-})
+    .where('meditation.user_id', id)
+    .orderBy('meditation_name', 'asc')
+    .orderBy('time', 'asc')
+    .orderBy('date', 'asc')
+    .catch((err) => {
+      console.log(err.message)
+    })
 }
 
-function deleteUser (obj, db = connection) {
+function deleteUser(obj, db = connection) {
   return db('users')
-  .where('name', obj.name)
-  .del()
-  .catch((err) => {
-    console.log(err.message)
-})
+    .where('name', obj.name)
+    .del()
+    .catch((err) => {
+      console.log(err.message)
+    })
 }
 
+function totalTime(arr, db = connection) {
+
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+  return arr.reduce(reducer);
+
+}
 
 module.exports = {
   addUser,
@@ -63,4 +73,5 @@ module.exports = {
   getAllUsers,
   getMeditationbyID,
   deleteUser,
+  totalTime,
 }

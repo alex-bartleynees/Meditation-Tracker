@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.integer('time')
     table.string('date')
     table.integer('user_id')
+    table.integer('total_time')
   })
   
 };

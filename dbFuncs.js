@@ -1,10 +1,10 @@
 
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
-const database = require('knex')(config)
+const connection = require('knex')(config)
 
 
-function addUser(obj, db = database) {
+function addUser(obj, db = connection) {
   return db('users').insert(obj)
   .catch((err) => {
     console.log(err.message)
@@ -12,7 +12,7 @@ function addUser(obj, db = database) {
   
 }
 
-function getNameId (obj, db = database) {
+function getNameId (obj, db = connection) {
   return db('users')
   .where('name', obj.name)
   .select()
@@ -21,7 +21,7 @@ function getNameId (obj, db = database) {
 })
 }
 
-function addMeditation (obj, db = database) {
+function addMeditation (obj, db = connection) {
   return db('meditation')
   .insert(obj)
   .select()
@@ -30,7 +30,7 @@ function addMeditation (obj, db = database) {
 })
 }
 
-function getAllUsers (db = database) {
+function getAllUsers (db = connection) {
   return db('users')
   .select()
   .catch((err) => {
@@ -38,7 +38,7 @@ function getAllUsers (db = database) {
 })
 }
 
-function getMeditationbyID (id, db = database) {
+function getMeditationbyID (id, db = connection) {
   return db('meditation')
   .where('meditation.user_id', id)
   .catch((err) => {

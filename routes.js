@@ -70,9 +70,21 @@ router.get('/meditation/:id', (req, res) => {
   const id = Number(req.params.id)
   return db.getMeditationbyID(id)
     .then(meditation => {
-      console.log({ meditation: meditation })
+    
       res.render('meditation', { meditation: meditation })
     })
+})
+
+router.get('/delete', (req, res) => {
+  res.render('delete')
+})
+
+router.post('/delete', (req, res) => {
+  const userName = {
+    name: req.body.delete
+  }
+  db.deleteUser(userName)
+  res.redirect('/')
 })
 
 

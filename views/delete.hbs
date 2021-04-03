@@ -1,0 +1,28 @@
+{{>header}}
+
+<div class="columns m-5">
+  <div class="container is-max-widescreen">
+    
+    <form ref='uploadForm' 
+      id='uploadForm' 
+      action='/delete' 
+      method='post'>
+     
+
+      <div class="column">
+        <div class="field">
+          <div class="control">
+            <label for="delete" name="delete" class="label is-large">
+              User to delete:
+              <input class="input is-link is-rounded spacing is-large" type="text" name="delete" value="" placeholder="Enter User Name">
+            </label>
+          </div>
+        </div>
+      </div>
+
+          <div class="column has-text-centered">
+        <div class="field">
+          <div class="control">
+            <button class="button is-link">Submit</button>
+          </div>
+        </div>

@@ -46,6 +46,15 @@ function getMeditationbyID (id, db = connection) {
 })
 }
 
+function deleteUser (obj, db = connection) {
+  return db('users')
+  .where('name', obj.name)
+  .del()
+  .catch((err) => {
+    console.log(err.message)
+})
+}
+
 
 module.exports = {
   addUser,
@@ -53,4 +62,5 @@ module.exports = {
   getNameId,
   getAllUsers,
   getMeditationbyID,
+  deleteUser,
 }

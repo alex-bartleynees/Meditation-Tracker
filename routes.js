@@ -44,14 +44,19 @@ router.post('/addMeditation', (req, res) => {
         date: req.body.date,
         user_id: nameId.id
       }
-
+    
 
       return db.addMeditation(meditationData)
         .then(x => {
           res.redirect('/')
+          
         })
-
+  
     })
+    .catch((err) => {
+      res.render('error')
+  })
+
 })
 
 router.get('/viewUsers/', (req, res) => {

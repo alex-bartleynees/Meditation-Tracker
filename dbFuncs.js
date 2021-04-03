@@ -1,7 +1,7 @@
 const knex = require('knex')
-const config = require('./knexfile')
 const env = process.env.NODE_ENV || 'development'
-const database = knex(config[env])
+const config = require('./knexfile')[env]
+const database = require('knex')(config)
 
 function addUser(obj, db = database) {
   return db('users').insert(obj)

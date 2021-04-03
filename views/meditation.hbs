@@ -1,0 +1,13 @@
+{{>header}}
+<div class-"container m-3">
+<ul>
+  {{#each meditation}}
+  <li class="has-text-centered m-3"> {{meditation_name}} </li>
+  <li class="has-text-centered m-3"> Time: {{time}} minutes </li>
+  <li class="has-text-centered m-3"> Date: {{date}} </li>
+  {{else}}
+  <h1 class="title is-3 has-text-centered">No data! Start Meditating!</h1>
+
+  {{/each}}
+</ul>
+</div>

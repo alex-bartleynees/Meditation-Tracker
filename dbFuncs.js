@@ -41,9 +41,7 @@ function getAllUsers(db = connection) {
 function getMeditationbyID(id, db = connection) {
   return db('meditation')
     .where('meditation.user_id', id)
-    .orderBy('meditation_name', 'asc')
-    .orderBy('time', 'asc')
-    .orderBy('date', 'asc')
+    .orderBy('date', 'desc')
     .catch((err) => {
       console.log(err.message)
     })

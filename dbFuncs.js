@@ -56,11 +56,23 @@ function deleteUser(obj, db = connection) {
     })
 }
 
-function totalTime(arr, db = connection) {
+function totalTime(arr) {
+  let timeArray = []
+ for (let i = 0; i< arr.length; i++) {
+     timeArray.push(arr[i].time)
+ 
+ }
+ const reducer = (accumulator, currentValue) => accumulator + currentValue;
+ 
+ let totalTime =  timeArray.reduce(reducer) / 60;
+ return totalTime
+ }
+ 
+ 
 
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-  return arr.reduce(reducer);
+function insertTotalTime (obj, id, db = connection) {
+  
+  
 
 }
 
@@ -72,4 +84,5 @@ module.exports = {
   getMeditationbyID,
   deleteUser,
   totalTime,
+  insertTotalTime
 }

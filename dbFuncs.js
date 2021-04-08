@@ -70,9 +70,20 @@ function totalTime(arr) {
  
  
 
-function insertTotalTime (obj, id, db = connection) {
-  
-  
+function insertTotalTime (arr, id, db = connection) {
+  return totalTime(arr)
+  .then(totalTime => {
+    return db('users')
+    .where('id', id)
+    .insert({'total_time':totalTime})
+    .catch((err) => {
+      console.log(err.message)
+    
+    
+
+  })
+
+})
 
 }
 

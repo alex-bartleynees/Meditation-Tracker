@@ -70,14 +70,17 @@ router.get('/meditation/:id', (req, res) => {
   const id = Number(req.params.id)
   return db.getMeditationbyID(id)
     .then(meditation => {
-    
-      return db.totalTime(meditation)
-      .then(totalTime => {
-        res.render('meditation', {meditation: meditation, totalTime: totalTime})
+      db.insertTotalTime(meditation, id)
+      
+        res.render('meditation', {meditation: meditation})
       })
-    })
+      })
+    
+      // return db.totalTime(meditation)
+      // .then(totalTime => {
+      //   res.render('meditation', {meditation: meditation, totalTime: totalTime})
    
-})
+
 
 router.get('/delete', (req, res) => {
   res.render('delete')

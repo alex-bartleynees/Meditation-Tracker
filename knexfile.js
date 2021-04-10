@@ -5,7 +5,7 @@ module.exports = {
       filename: './dev.sqlite3'
     },
     migrations: {
-      directory: __dirname + '/db/migrations'
+      directory: __dirname + '/migrations'
   },
     useNullAsDefault: true,
     pool: {

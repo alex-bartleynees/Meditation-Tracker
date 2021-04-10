@@ -31,8 +31,8 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: __dirname + '/migrations',
-      tableName: '20210403102007_users',
+      tableName: 'knex_migrations'
+      
     }
   }
 

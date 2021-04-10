@@ -4,6 +4,9 @@ module.exports = {
     connection: {
       filename: './dev.sqlite3'
     },
+    migrations: {
+      directory: __dirname + '/db/migrations'
+  },
     useNullAsDefault: true,
     pool: {
       afterCreate: (conn, cb) =>

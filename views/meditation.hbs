@@ -1,6 +1,7 @@
 {{>header}}
 <div class-"container m-3">
 <ul>
+ 
   {{#each meditation}}
   <li class="has-text-centered m-3"> <h2 class="title is-5">{{meditation_name}} </h2> </li>
   <li class="has-text-centered m-3"> Time: {{time}} minutes </li>
@@ -9,7 +10,9 @@
   <h1 class="title is-3 has-text-centered">No data! Start Meditating!</h1>
 
   {{/each}}
-
-  <li class="has-text-centered m-3"> <h2 class="title is-5">Total Time: {{meditation.total_time}} </h2> </li>
+ 
+  {{#each user}}
+  <li class="has-text-centered m-3"> <h2 class="title is-5">Total Time:  </h2> <p>{{total_time}} hours  </p> </li>
+  {{/each}}
 </ul>
 </div>

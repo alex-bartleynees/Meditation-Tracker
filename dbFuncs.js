@@ -38,6 +38,14 @@ function getAllUsers(db = connection) {
     })
 }
 
+function getUserbyId (id, db = connection) {
+  return db('users')
+  .where('id', id)
+  .catch((err) => {
+    console.log(err.message)
+  })
+}
+
 function getMeditationbyID(id, db = connection) {
   return db('meditation')
     .where('meditation.user_id', id)
@@ -66,23 +74,18 @@ function totalTime(arr) {
  
  let totalTime =  timeArray.reduce(reducer) / 60;
  return totalTime
- }
+
+}
  
  
 
-function insertTotalTime (arr, id, db = connection) {
-  return totalTime(arr)
-  .then(totalTime => {
+function insertTotalTime (func, id, db = connection) {
     return db('users')
     .where('id', id)
-    .insert({'total_time':totalTime})
+    .update({'total_time':func})
     .catch((err) => {
       console.log(err.message)
     
-    
-
-  })
-
 })
 
 }
@@ -95,5 +98,6 @@ module.exports = {
   getMeditationbyID,
   deleteUser,
   totalTime,
-  insertTotalTime
+  insertTotalTime,
+  getUserbyId
 }

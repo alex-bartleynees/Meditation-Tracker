@@ -70,11 +70,24 @@ router.get('/meditation/:id', (req, res) => {
   const id = Number(req.params.id)
   return db.getMeditationbyID(id)
     .then(meditation => {
-      db.insertTotalTime(meditation, id)
+     
+      db.insertTotalTime(db.totalTime(meditation), id)
+      .then(x => {
+        return db.getUserbyId(id)
+        .then(user => {
+  
+       
+        res.render('meditation', {meditation: meditation, user: user})
       
-        res.render('meditation', {meditation: meditation})
+      })
+    
       })
       })
+      .catch((err) => {
+        res.render('error2')
+      })
+   
+    })
     
       // return db.totalTime(meditation)
       // .then(totalTime => {

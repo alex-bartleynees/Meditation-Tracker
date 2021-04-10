@@ -33,7 +33,6 @@ module.exports = {
     migrations: {
       directory: __dirname + '/migrations',
       tableName: '20210403102007_users',
-      tableName: '20210403101959_meditation'
     }
   }
 
